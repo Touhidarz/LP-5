@@ -4,7 +4,7 @@
 #include <cuda_runtime.h>
 #include <stdbool.h>
 
-__global__ void vectorAdd(int* a, int* b, int* c, int size)
+_global_ void vectorAdd(int* a, int* b, int* c, int size)
 {
     int tid = blockIdx.x * blockDim.x + threadIdx.x;
     if (tid < size) {
@@ -27,7 +27,9 @@ bool verifyResults(int* c_cuda, int* c_normal, int size) {
 }
 
 int main()
-{
+{   
+
+    //
     int size = 1000000;
     int* a, * b, * c_cuda, * c_normal;
     int* dev_a, * dev_b, * dev_c;
